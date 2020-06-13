@@ -1,13 +1,45 @@
 const mongoose = require('mongoose');
 
+const bookFormat = ['Hardcover', 'Paperback', 'Magazine', 'Journal'];
+const bookStatus = ['Available', 'Reserved'];
 
 const bookSchema = new mongoose.Schema({
-    name:{
+    
+    title:{
         type: String,
         required: true
+    },
+    author:{
+        type:String,
+        required: true
+    },
+    publisher:{
+        type: String,
+        required: true
+    },
+    numberofpages:{
+        type: String,
+        required: true
+    },
+    format:{
+       type: String,
+       enum: bookFormat,
+       default: "Hardcover",
+       required: true
+    },
+    status:{
+        type: String,
+        enum: bookStatus,
+        default: "Available",
+        required: true
+    },
+    published_year:{
+        type: String,
+        required: true 
+    },
+    image:{
+        type:String
     }
-
-
 },{timestamps: true});
 
 module.exports = mongoose.model('Book', bookSchema);

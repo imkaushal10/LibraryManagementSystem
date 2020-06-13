@@ -35,11 +35,11 @@ bookrouter.route('/')
     });
 
 
-    //for book/:id
- taskrouter.route('/:id')
+    //for books/:id
+ bookrouter.route('/:id')
     .get((req,res, next) =>{
         Book.findById(req.params.id)
-        .then((bookss)=>{
+        .then((books)=>{
             res.json(books);
         }).catch(next);
     })
@@ -52,8 +52,16 @@ bookrouter.route('/')
         // res.send(`Will update book: ${req.params.id}`); //paramiterized string (`)=> (tille)
         Book.findById(req.params.id)
     .then((book)=>{
-        if(req.body.name) book.name = req.body.name;
-          book.save()
+        if(req.body);
+        book.title = req.body.title;
+        book.author = req.body.author;
+        book.publisher = req.body.publisher;
+        book.numberofpages = req.body.numberofpages;
+        book.format = req.body.format;
+        book.status = req.body.status;
+        book.published_year = req.body.published_year;
+        book.image = req.body.image;
+        book.save()
         .then((updatedbook)=>{
             res.json(updatedbook);  
         })  
