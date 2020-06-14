@@ -57,7 +57,6 @@ bookrouter.route('/')
         book.author = req.body.author;
         book.publisher = req.body.publisher;
         book.numberofpages = req.body.numberofpages;
-        book.format = req.body.format;
         book.status = req.body.status;
         book.published_year = req.body.published_year;
         book.image = req.body.image;
