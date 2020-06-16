@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Book = require('./Book');
 
 const bookFormat = ['Hardcover','Magazine', 'Journal'];
 
