@@ -4,7 +4,7 @@ const bookrouter = require('./routes/bookrouter');
 const categoryrouter = require('./routes/categoryrouter');
 const userrouter = require('./routes/userrouter');
 const book_reservation_router = require('./routes/book_reservation_router');
-// const auth = require('./auth');
+const auth = require('./auth');
 
 require('dotenv').config();
 
