@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bookrouter = require('./routes/bookrouter');
 const categoryrouter = require('./routes/categoryrouter');
 const userrouter = require('./routes/userrouter');
-const book_reservation_router = require('./routes/book_reservation_router');
+const bookingrouter = require('./routes/bookingrouter');
 const auth = require('./auth');
 
 require('dotenv').config();
@@ -30,7 +30,7 @@ app.get('/', (req, res)=>{
 app.use('/books', bookrouter); //auth.verifyUser
 app.use('/categories', categoryrouter);
 app.use('/users', userrouter); 
-app.use('/booking', book_reservation_router);
+app.use('/booking', bookingrouter);
 
 app.listen(process.env.Port,() =>{
     console.log(`Server is running at localhost:${process.env.Port}`);

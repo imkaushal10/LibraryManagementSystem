@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const ReservationStatus = ['Pending', 'Completed'];
 
 const book_reservationSchema = mongoose.Schema({
-    book_id:{
+    book:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Book'
     },
-    user_id:{
+    user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
