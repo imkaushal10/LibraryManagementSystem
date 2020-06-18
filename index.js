@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bookrouter = require('./routes/bookrouter');
-const categoryrouter = require('./routes/categoryrouter');
+const reviewrouter = require('./routes/reviewrouter');
 const userrouter = require('./routes/userrouter');
 const bookingrouter = require('./routes/bookingrouter');
 const auth = require('./auth');
@@ -28,7 +28,7 @@ app.get('/', (req, res)=>{
 });
 
 app.use('/books', bookrouter); //auth.verifyUser
-app.use('/categories', categoryrouter);
+app.use('/reviews', reviewrouter);
 app.use('/users', userrouter); 
 app.use('/booking', bookingrouter);
 

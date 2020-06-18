@@ -1,21 +1,20 @@
 const mongoose = require('mongoose');
 
-const ReservationStatus = ['Pending', 'Completed'];
-
-const bookingSchema = mongoose.Schema({
-    book:{
+const reviewSchema = mongoose.Schema({
+    book_id:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Book'
     },
-    user:{
+    user_id:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    status:{
+    description: {
         type: String,
-        enum: ReservationStatus
+        required: true
     }
+    
 }, {timestamps: true});
 
-module.exports = mongoose.model('Booking', bookingSchema);
+module.exports = mongoose.model('Review', reviewSchema);
 
