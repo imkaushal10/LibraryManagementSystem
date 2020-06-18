@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
 const bookStatus = ['Available', 'Reserved'];
+const bookFormat = ['Hardcover', 'Journal', 'Magazine'];
+
 const bookSchema = new mongoose.Schema({
      title:{
         type: String,
@@ -16,6 +18,12 @@ const bookSchema = new mongoose.Schema({
     },
     numberofpages:{
         type: String,
+        required: true
+    },
+    format:{
+        type: String,
+        emun: bookFormat,
+        default: "Hardcover",
         required: true
     },
     status:{
