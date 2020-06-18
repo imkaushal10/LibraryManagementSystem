@@ -1,11 +1,8 @@
 const mongoose = require('mongoose');
 
-
 const bookStatus = ['Available', 'Reserved'];
-
 const bookSchema = new mongoose.Schema({
-    
-    title:{
+     title:{
         type: String,
         required: true
     },
