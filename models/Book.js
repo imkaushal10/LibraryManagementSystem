@@ -4,7 +4,11 @@ const bookStatus = ['Available', 'Reserved'];
 const bookFormat = ['Hardcover', 'Journal', 'Magazine'];
 
 const bookSchema = new mongoose.Schema({
-     title:{
+    ratings:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Review'
+    }],
+    title:{
         type: String,
         required: true
     },
@@ -38,11 +42,7 @@ const bookSchema = new mongoose.Schema({
     },
     image:{
         type:String
-    },
-    reviews:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Review'
-    }]
+    }
 },{timestamps: true});
 
 module.exports = mongoose.model('Book', bookSchema);

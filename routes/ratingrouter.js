@@ -1,14 +1,14 @@
 const express = require('express');
 const Book = require('../models/Book');
 const User = require('../models/User');
-const Review = require('../models/Review');
+const Rating = require('../models/Rating');
 const auth = require('../auth');
 
 
-const reviewrouter = express.Router();
+const ratingrouter = express.Router();
 
 
-reviewrouter.route('/')
+ratingrouter.route('/')
 
     .get((req, res, next) =>{
         Review.find() //user: req.user.id
@@ -83,5 +83,5 @@ reviewrouter.route('/')
 //     });
 
 
-module.exports = reviewrouter;
+module.exports = ratingrouter;
 
