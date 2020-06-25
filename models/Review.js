@@ -9,11 +9,11 @@ const ratingSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    rating: {
-        type: number
+    description: {
+        type: string
     }
     
 }, {timestamps: true});
 
-module.exports = mongoose.model('Rating', ratingSchema);
+module.exports = mongoose.model('Review', reviewSchema);
 

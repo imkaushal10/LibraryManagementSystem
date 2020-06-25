@@ -4,7 +4,7 @@ const bookStatus = ['Available', 'Reserved'];
 const bookFormat = ['Hardcover', 'Journal', 'Magazine'];
 
 const bookSchema = new mongoose.Schema({
-    ratings:[{
+    reviews:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Review'
     }],

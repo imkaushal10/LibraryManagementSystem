@@ -1,14 +1,14 @@
 const express = require('express');
 const Book = require('../models/Book');
 const User = require('../models/User');
-const Rating = require('../models/Rating');
+const Review = require('../models/Review');
 const auth = require('../auth');
 
 
-const ratingrouter = express.Router();
+const reviewrouter = express.Router();
 
 
-ratingrouter.route('/')
+reviewrouter.route('/')
 
     .get((req, res, next) =>{
         Review.find() //user: req.user.id
@@ -25,27 +25,27 @@ ratingrouter.route('/')
     //         res.status(201).json(tasks);
     //     }).catch(next);
     // })
-    .post((req, res, next)=>{
-        let {description} = req.body;
-        // let book_id = req.book.id;
-        let user_id = req.User.id;
-        Review.create({description})
-        .then ((reviews)=>{
-            res.status(201).json(reviews);
-        }).catch(next);
-    })
+    // .post((req, res, next)=>{
+    //     let {description} = req.body;
+    //     // let book_id = req.book.id;
+    //     let user_id = req.user.id;
+    //     Review.create({description})
+    //     .then ((reviews)=>{
+    //         res.status(201).json(reviews);
+    //     }).catch(next);
+    // })
 
-    .put((req, res)=>{
-        let message = req.user.id;
-        res.send(message);
-    })
+    // .put((req, res)=>{
+    //     let message = req.user.id;
+    //     res.send(message);
+    // })
 
-    .delete((req, res, next)=>{
-        Review.deleteMany()
-        .then((reply)=>{
-            res.json(reply);
-        }).catch(next);
-    });
+    // .delete((req, res, next)=>{
+    //     Review.deleteMany()
+    //     .then((reply)=>{
+    //         res.json(reply);
+    //     }).catch(next);
+    // });
 
 
 //     //for task/:id
