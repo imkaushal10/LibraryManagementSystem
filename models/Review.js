@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ratingSchema = mongoose.Schema({
+const reviewSchema = mongoose.Schema({
     book_id:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Book'
@@ -10,7 +10,7 @@ const ratingSchema = mongoose.Schema({
         ref: 'User'
     },
     description: {
-        type: string
+        type: String
     }
     
 }, {timestamps: true});

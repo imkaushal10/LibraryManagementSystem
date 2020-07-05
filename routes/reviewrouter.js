@@ -83,5 +83,5 @@ reviewrouter.route('/')
 //     });
 
 
-module.exports = ratingrouter;
+module.exports = reviewrouter;
 
