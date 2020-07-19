@@ -12,7 +12,7 @@ userrouter.post('/register',(req, res, next)=>{
         if(user){
           throw new Error('User already exists'); 
         }
-        bcryptjs.hash(password, 10, (err,hash)=>{
+        bcryptjs.hash(password, 5, (err,hash)=>{
             if(err) next(err);
             User.create({email, password: hash, firstname, lastname, role}) //npm install bcryptjs --save
             .then(user=>{
