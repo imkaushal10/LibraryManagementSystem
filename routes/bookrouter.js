@@ -196,7 +196,7 @@ bookrouter.route('/:bookid/bookings/:bookingid')
         }).catch(next);
     })  
     .post(auth.verifyUser, (req, res, next)=>{
-        Book.findById(req.params.booid)
+        Book.findById(req.params.bookid)
         .then(book=>{
         //     let {description} = req.body;
         //    let user = req.user.id;
