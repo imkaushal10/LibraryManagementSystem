@@ -5,6 +5,7 @@ const reviewrouter = require('./routes/reviewrouter');
 const userrouter = require('./routes/userrouter');
 const bookingrouter = require('./routes/bookingrouter');
 const auth = require('./auth');
+const cors = require('cors');
 
 require('dotenv').config();
 
@@ -19,6 +20,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/LMS',{
     console.log('Server connected to database');
 });
 
+app.use(cors ('*'))
 app.use(express.json()); //json data
 app.use(express.urlencoded({extended: false})); //html form data 
 

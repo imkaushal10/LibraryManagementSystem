@@ -198,9 +198,9 @@ bookrouter.route('/:bookid/bookings/:bookingid')
     .post(auth.verifyUser, (req, res, next)=>{
         Book.findById(req.params.bookid)
         .then(book=>{
-        //     let {description} = req.body;
-        //    let user = req.user.id;
-            Review.create(req.body)
+            let {description} = req.body;
+           let user = req.user.id;
+            Review.create({user, description})
             .then(review=>{
                 // res.status(201).json(review);
                 // console.log(review._id)

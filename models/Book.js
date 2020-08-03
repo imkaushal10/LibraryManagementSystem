@@ -45,7 +45,6 @@ const bookSchema = new mongoose.Schema({
     },
     numberofpages:{
         type: String,
-        required: true
     },
     format:{
         type: String,
@@ -61,7 +60,7 @@ const bookSchema = new mongoose.Schema({
     },
     published_year:{
         type: String,
-        required: true 
+    
     },
     image:{
         type:String
