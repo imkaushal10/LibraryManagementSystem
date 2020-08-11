@@ -12,6 +12,7 @@ reviewrouter.route('/')
 
     .get((req, res, next) =>{
         Review.find() //user: req.user.id
+        .populate('users', 'email')
         .then ((reviews)=>{
             res.json(reviews);
         }).catch(next);
@@ -20,7 +21,9 @@ reviewrouter.route('/')
     .post(auth.verifyUser, (req, res, next)=>{
         let {description} = req.body;
         let user = req.user.id;
+        
         Review.create({user, description})
+        // .populate('users')
         .then ((reviews)=>{
             res.status(201).json(reviews);
         }).catch(next);

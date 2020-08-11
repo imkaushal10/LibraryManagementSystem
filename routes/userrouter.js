@@ -47,7 +47,7 @@ userrouter.post('/login', (req, res, next)=>{
             } 
             jwt.sign(payload, process.env.SECRET, {expiresIn: "4hr"}, (err, token)=>{
                 if(err){throw new Error ('Token couldnot be created')};
-                 res.json({message: 'Login Successfull', token});
+                res.json({message: 'Login Successfull', token});
             });      
        })
     }).catch(next);

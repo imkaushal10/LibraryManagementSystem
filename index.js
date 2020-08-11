@@ -4,6 +4,7 @@ const bookrouter = require('./routes/bookrouter');
 const reviewrouter = require('./routes/reviewrouter');
 const userrouter = require('./routes/userrouter');
 const bookingrouter = require('./routes/bookingrouter');
+const jwt = require('jsonwebtoken');
 const auth = require('./auth');
 const cors = require('cors');
 
