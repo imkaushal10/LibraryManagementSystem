@@ -87,7 +87,7 @@ bookrouter.route('/')
     res.status(401).send('Not Allowed');
     })
 
-    .put((req, res, next)=>{
+    .put(upload.single('image'),(req, res, next)=>{
         // res.send(`Will update book: ${req.params.id}`); //paramiterized string (`)=> (tille)
     Book.findById(req.params.id)
     .then((book)=>{
@@ -97,7 +97,7 @@ bookrouter.route('/')
         book.publisher = req.body.publisher;
         book.status = req.body.status;
         book.published_year = req.body.published_year;
-        book.image = req.body.image;
+        book.image = req.file.filename;
         book.save()
         .then((updatedbook)=>{
             res.json(updatedbook);  
@@ -116,6 +116,7 @@ bookrouter.route('/')
 bookrouter.route('/:bookid/bookings')
     .get((req, res, next) =>{
         Book.findById(req.params.bookid)
+        .populate("bookings.booked_by", "_id email") 
         .then ((books)=>{
             res.json(books.bookings);
         }).catch(next);
@@ -190,7 +191,7 @@ bookrouter.route('/:bookid/bookings/:bookingid')
     bookrouter.route('/:bookid/reviews')
     .get((req, res, next)=>{
         Book.findById(req.params.bookid)
-        .populate('books.reviews', '_id user description')
+        // .populate('books.reviews', '_id user description')
         .then(book =>{
             res.json(book.reviews);
         }).catch(next);
@@ -198,7 +199,7 @@ bookrouter.route('/:bookid/bookings/:bookingid')
     .post( auth.verifyUser, (req, res, next)=>{                  //auth.verifyUser,
                 
         Book.findById(req.params.bookid)
-        .populate("books.reveiws", "id user description")
+        .populate("books.reveiws", "_id user description")
         .then(book=>{
            let {description} = req.body;
            let user = req.user.id;
