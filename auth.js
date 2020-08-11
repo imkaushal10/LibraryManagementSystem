@@ -17,19 +17,19 @@ const verifyUser = ((req, res, next)=>{
 
 })
 
-const verifyManager = ((req,res,next)=>{
-    if(!req.user){
-        let err = new Error ("No authentication inforamtion");
-        err.status= 400;
-        next(err);
-    }
-    if(req.user.role == 'manager'){
-        return next();
-    }
-        let err = new Error ("Forbidden");
-        err.status= 400;
-        next(err);
-})
+// const verifyManager = ((req,res,next)=>{
+//     if(!req.user){
+//         let err = new Error ("No authentication inforamtion");
+//         err.status= 400;
+//         next(err);
+//     }
+//     if(req.user.role == 'manager'){
+//         return next();
+//     }
+//         let err = new Error ("Forbidden");
+//         err.status= 400;
+//         next(err);
+// })
 
 const verifyAdmin = (req,res,next)=>{
     if(!req.user){
