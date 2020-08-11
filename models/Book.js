@@ -50,13 +50,13 @@ const bookSchema = new mongoose.Schema({
         type: String,
         emun: bookFormat,
         default: "Hardcover",
-        required: true
+    
     },
     status:{
         type: String,
         enum: bookStatus,
         default: "Available",
-        required: true
+
     },
     published_year:{
         type: String,
