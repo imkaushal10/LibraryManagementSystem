@@ -4,19 +4,14 @@ const mongoose = require('mongoose');
 const ReservationStatus = ['Pending', 'Completed'];
 
 const bookingSchema = mongoose.Schema({
-    book:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Book'
-    }],
     booked_by:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         // required : true
     }],
-    status:{
-        type: String,
-        enum: ReservationStatus,
-        default: "Pending"
+    booking_date:{
+        type: Date,
+        default: Date.now
     }
 }, {timestamps: true});
 
@@ -43,13 +38,10 @@ const bookSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    numberofpages:{
-        type: String,
-    },
     format:{
         type: String,
         emun: bookFormat,
-        default: "Hardcover",
+        required: true
     
     },
     status:{
@@ -60,7 +52,7 @@ const bookSchema = new mongoose.Schema({
     },
     published_year:{
         type: String,
-    
+        required: true
     },
     image:{
         type:String
