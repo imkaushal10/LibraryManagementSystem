@@ -116,7 +116,7 @@ bookrouter.route('/')
 bookrouter.route('/:bookid/bookings')
     .get((req, res, next) =>{
         Book.findById(req.params.bookid)
-        .populate("bookings.booked_by", "_id email") 
+        .populate("bookings.booked_by", "email") 
         .then ((books)=>{
             res.json(books.bookings);
         }).catch(next);
@@ -124,12 +124,12 @@ bookrouter.route('/:bookid/bookings')
     
     .post(  auth.verifyUser,(req, res, next)=>{               
         Book.findById(req.params.bookid)
-        .populate("bookings.booked_by", "_id email")  
+        .populate("bookings.booked_by", "email")  
         .then(books =>{
-            let book = req.params.bookid;
+            // let book = req.params.bookid;
             let booked_by = req.user.id;
-            let {status} = req.body;
-            books.bookings.push({book, booked_by, status})   
+            let {booking_date} = req.body;
+            books.bookings.push({booked_by, booking_date})   
             books.save()
             .then(updatedbook => {
                 res.status(201).json(updatedbook.bookings);
@@ -199,7 +199,7 @@ bookrouter.route('/:bookid/bookings/:bookingid')
     .post( auth.verifyUser, (req, res, next)=>{                  //auth.verifyUser,
                 
         Book.findById(req.params.bookid)
-        .populate("books.reveiws", "_id user description")
+        .populate("books.reveiws", "_id email")
         .then(book=>{
            let {description} = req.body;
            let user = req.user.id;
