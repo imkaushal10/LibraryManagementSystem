@@ -21,6 +21,7 @@
     "nodemon": "^2.0.4"
   },
   "devDependencies": {
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "jest-environment-node": "^26.2.0"
   }
 }
