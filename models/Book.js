@@ -41,7 +41,7 @@ const bookSchema = new mongoose.Schema({
     format:{
         type: String,
         emun: bookFormat,
-        default: 'Hardcover'
+        default: "Hardcover"
     
     },
     status:{

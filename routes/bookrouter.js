@@ -52,10 +52,11 @@ bookrouter.route('/')
         let author = req.body.author;
         let publisher = req.body.publisher;
         let numberofpages = req.body.numberofpages;
+        let format = req.body.format;
         let status = req.body.status;
         let published_year = req.body.published_year;
         let image = req.file.filename;
-        Book.create({title, author, publisher, numberofpages, status, published_year, image}) //{title, author, publisher, numberofpages, status, published_year, image}
+        Book.create({title, author, publisher, numberofpages, format, status, published_year, image}) //{title, author, publisher, numberofpages, status, published_year, image}
         .then ((books)=>{
             res.status(201).json(books);
             console.log(req.file);
@@ -95,6 +96,7 @@ bookrouter.route('/')
         book.title = req.body.title;
         book.author = req.body.author;
         book.publisher = req.body.publisher;
+        book.format = req.body.format;
         book.status = req.body.status;
         book.published_year = req.body.published_year;
         book.image = req.file.filename;
