@@ -3,9 +3,21 @@ const User = require('../models/User');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+const validation = require('../validation');
+
 const userrouter = express.Router();
 
 userrouter.post('/register',(req, res, next)=>{
+    const {errors, isValid} = validation.registerinput(req.body);
+
+    if(!isValid){
+        res.status(400).json(
+            {
+            status: 'error',
+            message: errors
+        })
+    }
+    
     let {email, password, firstname, lastname, role} = req.body;
     User.findOne({ email })
     .then(user=>{
