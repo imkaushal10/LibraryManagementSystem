@@ -191,9 +191,10 @@ bookrouter.route('/:bookid/bookings/:bookingid')
 
 
     bookrouter.route('/:bookid/reviews')
-    .get((req, res, next)=>{
+    .get(auth.verifyUser, (req, res, next)=>{
         Book.findById(req.params.bookid)
-        // .populate('books.reviews', '_id user description')
+        .populate("users", "email")
+        .populate("reviews._id", "_id")
         .then(book =>{
             res.json(book.reviews);
         }).catch(next);
@@ -201,7 +202,7 @@ bookrouter.route('/:bookid/bookings/:bookingid')
     .post( auth.verifyUser, (req, res, next)=>{                  //auth.verifyUser,
                 
         Book.findById(req.params.bookid)
-        .populate("books.reveiws", "_id email")
+        .populate("books.reveiws", "_id user description")
         .then(book=>{
            let {description} = req.body;
            let user = req.user.id;
@@ -263,7 +264,7 @@ bookrouter.route('/:bookid/bookings/:bookingid')
     }).catch(next);
     })
     .delete((req, res, next)=>{
-    book.findById(req.params.bookid)
+    Book.findById(req.params.bookid)
     .then(book=>{
         if(book.reviews.includes(req.params.reviewid)){
         book.reviews =  book.reviews.filter(bookid=>{

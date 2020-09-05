@@ -12,7 +12,7 @@ reviewrouter.route('/')
 
     .get((req, res, next) =>{
         Review.find() //user: req.user.id
-        .populate('users', 'email')
+        .populate('user', '_id email')
         .then ((reviews)=>{
             res.json(reviews);
         }).catch(next);
