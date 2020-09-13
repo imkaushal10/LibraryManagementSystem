@@ -13,6 +13,7 @@ app.use('/users', userRouter);
 
 describe('Test of users', () =>{
 
+    let userid;
 
     test('Able to Register', () =>{
         return request(app).post('/users/register')
@@ -23,6 +24,7 @@ describe('Test of users', () =>{
             lastname: 'Prasad' 
         }).then((res)=>{
            console.log(res.body);
+           userid = res.body._id; 
            expect(res.statusCode).toBe(200);  
         })  
     })
@@ -49,4 +51,23 @@ describe('Test of users', () =>{
            expect(res.body.token).not.toBe(undefined);
         })  
     })
+
+    test('must get users', () =>{
+        return request(app).get('/users')
+        .then((res)=>{
+            console.log(res);
+            expect(res.statusCode).toBe(200);
+        }) 
+    })
+
+    test('must get user with id', () =>{
+    
+        return request(app).get('/users/5f12bc6886d412207cfdd584')
+        .then((res)=>{
+            console.log(res);
+            expect(res.statusCode).toBe(200);
+        }) 
+    })
+
+
 })
