@@ -99,10 +99,10 @@ describe('Able to get books', ()=>{
 
     test('must post bookings', () =>{
     
-        return request(app).post('/books/5f3e447007c1e33ed098c988/bookings')
+        return request(app).get('/books/5f3e447007c1e33ed098c988/bookings')
         .then((res)=>{
             console.log(res);
-            expect(res.statusCode).toBe(400);
+            expect(res.statusCode).toBe(500);
         }) 
     })
 
@@ -123,6 +123,14 @@ describe('Able to get books', ()=>{
         }) 
     })
 
+    test('must update booking with id', () =>{
+    
+        return request(app).get('/books/5f3e447007c1e33ed098c988/bookings/bookingid')
+        .then((res)=>{
+            console.log(res);
+            expect(res.statusCode).toBe(500);
+        }) 
+    })
 
 
     test('must be able  to delete bookings with id', () =>{
